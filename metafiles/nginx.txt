@@ -1,6 +1,6 @@
 server{
-        listen 80;
-        server_name <put aws public IP address>
+        listen 80; # aws inbound ports
+        server_name <put aws public IP address>;
         location / {
                 proxy_pass http://127.0.0.1:8000; #fastapi local server address
         }

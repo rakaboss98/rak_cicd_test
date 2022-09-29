@@ -1,0 +1,15 @@
+
+# Install nginx in the EC2 instance
+# Everytime the aws instance spins up change the public IP in the nginx script
+# Nginx server restart command
+
+sudo service nginx restart
+
+# Docker build/run commands
+
+docker build -t <image name> .
+docker run -it -p 8000:8000 <image name>
+
+# Web IP
+
+http://<AWS public IP address>/docs
