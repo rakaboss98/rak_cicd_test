@@ -2,14 +2,14 @@ name: Deploy to ECR and start EC2
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
     name: rak_cicd_test_image
     runs-on: ubuntu-latest
     steps:
-    
+
     - name: checkout code
       uses: actions/checkout@v2
 
