@@ -7,6 +7,5 @@ ADD ./Data ./Data
 COPY ./app.py ./
 COPY ./dataloader.py ./
 COPY ./func.py ./
-COPY ./bash.sh ./
 EXPOSE 5000
 CMD ["python","app.py"]
