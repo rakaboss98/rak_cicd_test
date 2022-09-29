@@ -8,11 +8,11 @@ jobs:
   build:
     name: rak_cicd_test_image
     runs-on: ubuntu-latest
-
     steps:
+    
     - name: checkout code
       uses: actions/checkout@v2
-    
+
     - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
