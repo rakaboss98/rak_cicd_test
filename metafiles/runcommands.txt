@@ -1,4 +1,3 @@
-
 # Install nginx in the EC2 instance
 # Everytime the aws instance spins up change the public IP in the nginx script
 # Nginx server restart command
