@@ -1,4 +1,7 @@
-FROM python:3.9
+FROM ubuntu
+RUN apt-get update -y
+RUN apt install python3 -y
+RUN apt install python3-pip -y
 WORKDIR /usr/src/app
 COPY ./requirements.txt ./
 RUN pip install --upgrade pip
@@ -8,5 +11,5 @@ COPY ./app.py ./
 COPY ./dataloader.py ./
 COPY ./func.py ./
 COPY ./bash.sh ./
-EXPOSE 5000
-CMD ["python3","app.py"]
+EXPOSE 8000
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--reload"]
