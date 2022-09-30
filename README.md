@@ -96,7 +96,7 @@ Now we'll create an automate.sh script to automate the actions that we need to r
 #! /bin/sh
 sudo service nginx restart
 sudo docker pull <aws_account_id>.dkr.ecr.<your region>.com/<repo_name>:<tag>
-sudo docker run -it -p 8000:8000 <aws account id>.dkr.<region name>.amazonaws.com/<repo name>:<tag> 
+sudo docker run -p 8000:8000 <aws account id>.dkr.<region name>.amazonaws.com/<repo name>:<tag> 
 #etc.
 ```
 Make sure  you've the permissions to run the bash script
