@@ -22,11 +22,16 @@ sudo apt-get install awscli
 sudo aws configure 
 
 # Aws commands to pull the image from docker hub
+# One time setup
 sudo aws ecr get-login-password --region <region_name> | sudo docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region_name>.amazonaws.com
+
+# Put it inside automate.sh
 sudo docker pull <aws_account_id>.dkr.ecr.<your region>.com/<repo_name>:<tag>
 sudo docker pull 046307157488.dkr.ecr.us-west-1.amazonaws.com/rak_cicd_test:latest
 # remove -it tag when running the image from crontab
 sudo docker run -it -p 8000:8000 046307157488.dkr.ecr.us-west-1.amazonaws.com/rak_cicd_test:latest 
+# Put all these commands inside crontab to execute at reboot or when the instance starts
+
 
 # Create an elastic IP for your EC2 instance and assosiate with your EC2 instance
 # This IP won't change when the instance is rebooted
