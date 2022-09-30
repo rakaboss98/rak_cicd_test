@@ -32,18 +32,18 @@ A proxy server maps the EC2 port 80 to the active port of the local server, in t
 First add the inbound rules in security groups to allow port 80 to take input requests, you can refer to this link: https://www.youtube.com/watch?v=UQLWYy-EpCg
 
 Install nginx in your EC2 by executing the following commands 
-'''
+```
 sudo apt-get update
 sudo apt-get install nginx
-'''
+```
 After nginx installation crete the following file:
 
-'''
+```
 sudo nano /etc/nginx/sites-enabled/fastapi_nginx 
-'''
+```
 
 Then add the following script: 
-'''
+```
 server{
         listen 80; # aws inbound ports
         server_name <put aws public IP address>;
@@ -51,23 +51,23 @@ server{
                 proxy_pass http://127.0.0.1:8000; #fastapi local server address
         }
 }
-'''
+```
 
 After saving the script, execute the following command (you can also add it to your automation bash script)
 
-'''
+```
 sudo service nginx restart
-'''
+```
 Your nginx proxy server is ready now 
 
 ### Configure awscli 
 
 In order to make sure that you're able to pull the docker image from AWS ECR, you need to configure AWS command line interface, execute the following steps:
 Install AWS cli
-'''
+```
 sudo apt-get install awscli
 sudo aws configure
-'''
+```
 Add all your credentials in sudo aws configure
 
 
@@ -75,38 +75,38 @@ Add all your credentials in sudo aws configure
 
 If your EC2 instance does not have docker, you can install docker using the following command:
 
-'''
+```
 sudo apt-get install docker.io
-'''
+```
 
 Give permissions to docker to pull image from ECR
 
-'''
+```
 sudo aws ecr get-login-password --region <region_name> | sudo docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region_name>.amazonaws.com
-'''
+```
 
 ### Create an bash automation script to automate docker pull and run processes
 
 Now we'll create an automate.sh script to automate the actions that we need to run once the EC2 instance is started by Github actions 
 
-'''
+```
 #! /bin/sh
 sudo service nginx restart
 sudo docker pull <aws_account_id>.dkr.ecr.<your region>.com/<repo_name>:<tag>
 sudo docker run -it -p 8000:8000 <aws account id>.dkr.<region name>.amazonaws.com/<repo name>:<tag> 
 #etc.
-'''
+```
 Make sure  you've the permissions to run the bash script
 
 Now Put this script in crontab to execute it whenever the instance gets started
 
-'''
+```
 crontab -e 
-'''
+```
 
 and add
 
-'''
+```
 @reboot /ubuntu/home/automate.sh
-'''
+```
 Now save and stop the container, make a change in your repository and push it to github
