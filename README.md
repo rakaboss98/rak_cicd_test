@@ -1,5 +1,8 @@
 # Important steps and commands
-This repository is a simple example of implementing a CICD process using GitHub Actions, Amazon ECR, Amazon EC2 and bash scipt
+This repository is a simple example of implementing a CICD process using GitHub Actions, Amazon ECR, Amazon EC2 and bash scipt, the complete block diagram of the system is shown below
+![System Diagram](https://github.com/[rakaboss98]/[rak_cicd_test]/blob/[main]/metafiles/figure.png?raw=true)
+
+
 ## Structuring the repository on the local
 The repository consists of the following files, the functionality of each of them is specified
 
