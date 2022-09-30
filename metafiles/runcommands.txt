@@ -2,6 +2,7 @@
 # Everytime the aws instance spins up change the public IP in the nginx script
 # Nginx server restart command
 
+sudo nano /etc/nginx/sites-enabled/fastapi_nginx 
 sudo service nginx restart
 
 # Docker build/run commands
@@ -12,3 +13,21 @@ docker run -it -p 8000:8000 <image name>
 # Web IP
 
 http://<AWS public IP address>/docs
+
+# Aws configuration
+
+sudo apt-get install awscli
+
+# Put aws access commands in aws
+sudo aws configure 
+
+# Aws commands to pull the image from docker hub
+sudo aws ecr get-login-password --region <region_name> | sudo docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region_name>.amazonaws.com
+sudo docker pull <aws_account_id>.dkr.ecr.<your region>.com/<repo_name>:<tag>
+sudo docker pull 046307157488.dkr.ecr.us-west-1.amazonaws.com/rak_cicd_test:latest
+# remove -it tag when running the image from crontab
+sudo docker run -it -p 8000:8000 046307157488.dkr.ecr.us-west-1.amazonaws.com/rak_cicd_test:latest 
+
+# Create an elastic IP for your EC2 instance and assosiate with your EC2 instance
+# This IP won't change when the instance is rebooted
+# Add this elastic IP address to nginx script 
