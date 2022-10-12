@@ -1,4 +1,6 @@
 # Important steps and commands
+**Note**: Don't forget to aws_access_key and aws_secret_access_key in the dataloader before starting  
+
 This repository is a simple example of implementing a CICD process using GitHub Actions, Amazon ECR, Amazon EC2 and bash scipt, the complete block diagram of the system is shown below
 ![plot](./metafiles/figure.png)
 
