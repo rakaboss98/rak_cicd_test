@@ -1,7 +1,8 @@
 import boto3 
 
-access_key = 'AKIAQVSA7EXYBCJRHLR7'
-secret_access_key = 'qk9f31GTfTXWZNzihICMqK1j1mFrYY3vQId3lKpn'
+# add the access key and the secret access key before starting
+access_key = ''
+secret_access_key = ''
 bucket_name = 'sample-datasets-galaxeye'
 bucket_read_path = 'rak_cicd_test/Read/'
 bucket_write_path = 'rak_cicd_test/Write/'
